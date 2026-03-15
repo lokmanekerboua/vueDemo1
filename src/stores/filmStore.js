@@ -26,11 +26,20 @@ export const useFilmStore = defineStore('films', () => {
         }
     }
 
+    async function fetchFilmById(id) {
+        try {
+            const { data } = await filmService.getById(id)
+            return data
+        } catch (err) {
+            throw new Error(err.response?.data?.message ?? 'Film introuvable')
+        }
+    }
+
     async function deleteFilm(id) {
         await filmService.delete(id)
         films.value = films.value.filter(f => f.id !== id)
         total.value--
     }
 
-    return { films, isLoading, error, filmCount, fetchFilms, deleteFilm }
+    return { films, isLoading, error, filmCount, fetchFilms, fetchFilmById, deleteFilm }
 })
