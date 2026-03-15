@@ -3,6 +3,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 const routes = [
     {
         path: '/',
+        name: 'AuthPage',
+        component: () => import('@/views/AuthView.vue')
+    },
+    {
+        path: '/films',
         name: 'FilmList',
         component: () => import('@/views/FilmListView.vue')
     },

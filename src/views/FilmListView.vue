@@ -90,7 +90,7 @@ onMounted(fetchFilms)
   min-height: 100vh;
   background: #0f0f13;
   color: #e8e6e1;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'JetBrains Mono', Consolas,monospace;
 }
 
 .page-header {
