@@ -35,11 +35,18 @@ export const useFilmStore = defineStore('films', () => {
         }
     }
 
+    async function createFilm(payload) {
+        const { data } = await filmService.create(payload)
+        films.value.unshift(data)
+        total.value++
+        return data
+    }
+
     async function deleteFilm(id) {
         await filmService.delete(id)
         films.value = films.value.filter(f => f.id !== id)
         total.value--
     }
 
-    return { films, isLoading, error, filmCount, fetchFilms, fetchFilmById, deleteFilm }
+    return { films, isLoading, error, filmCount, fetchFilms, fetchFilmById, deleteFilm, createFilm }
 })
